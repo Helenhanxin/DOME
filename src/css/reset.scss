@@ -1,0 +1,135 @@
+
+/*CSS Reset*/
+$white-bg:#fff;
+$line-height-base:      1.5; 
+$font-size-base:        16px;
+$txt-default:           #444;
+
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+legend,
+input,
+textarea,
+p,
+blockquote,
+th,
+td,
+header,
+hgroup,
+nav,
+section,
+article,
+aside,
+footer,
+figure,
+figcaption,
+menu,
+button {
+    margin: 0;
+    padding: 0;  
+}
+
+body {
+    font-family: "PingFangSC-Regular","Microsoft YaHei","Hiragino Sans GB","WenQuanYi Micro Hei", sans-serif;
+    line-height: $line-height-base;
+    font-size: $font-size-base;
+    color: $txt-default;
+    background-color: $white-bg;   
+    -webkit-user-select: none;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    outline: 0;
+    height: 100%;
+    width:100%;
+    overflow-x:hidden;
+}
+html{
+    height: 100%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-size: 100%;
+    font-weight: normal;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+caption, th {
+    text-align: left;
+}
+
+fieldset,
+img {
+    border: 0;
+}
+
+li {
+    list-style: none;
+}
+
+ins {
+    text-decoration: none;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+input, 
+button, 
+textarea,
+select, 
+optgroup, 
+option{
+    font-family: inherit;
+    font-size: inherit;
+    font-style: inherit;
+    font-weight: inherit;
+    outline: 0;
+}
+
+button{
+    -webkit-appearance: none;
+    border: 0;
+    background: none;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button{
+    -webkit-appearance: none !important;
+    margin: 0;
+}
+input[type="number"]{-moz-appearance:textfield;}
+a{
+    -webkit-touch-callout:none;
+    text-decoration: none; 
+}
+
+:focus{
+    outline: 0;
+    -webkit-tap-highlight-color: transparent;
+}
+
+em,i {
+    font-style: normal;  
+}
+
+
