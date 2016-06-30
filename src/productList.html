@@ -3,106 +3,79 @@
 
 <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>DOME List</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/reset.css">
 </head>
 
-<body>
-    <div class="logoTop"><img src="images/logo.jpg">
-        <div class="arrowRight"><img src="images/arrow-right.png" /></div>
+<body id="listBody">
+    <div class="listLogo">
+        <img src="images/logo2.jpg" />
     </div>
-    <div class="productTitle">2014年什么品牌什么型号的车</div>
-    <div class="productBox">
-        <div class="productName">TSW AMAROO</div>
-        <div class="imgBox">
-            <img src="images/product1.jpg" />
-            <img src="images/product2.jpg" />
-            <img src="images/product3.jpg" />
+    <table class="listTable">
+        <thead>
+            <tr>
+                <th width="10%">品牌</th>
+                <th width="15%">型号</th>
+                <th width="15%">年份</th>
+                <th width="15%">前/后</th>
+                <th width="12%">规格</th>
+                <th width="11%">PCD</th>
+                <th width="11%">CB</th>
+                <th width="11%">ET</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><span v-text="brand"></span></td>
+                <td><span v-text="model"></span></td>
+                <td><span v-text="carDate"></span></td>
+                <td><span v-text="frontAndBack"></span></td>
+                <td><span v-text="size"></span></td>
+                <td><span v-text="pcd"></span></td>
+                <td><span v-text="cb"></span></td>
+                <td><span v-text="et"></span></td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="productContent">
+        <div class="productBox" v-for="(rootIndex, item) in productList">
+            <div class="productBigImg">
+            <img :src="item.bigImg"  class="productImg" @click="productDetail(rootIndex)" />
+                        </div>
+            <div  :class={colorImg:true,active:small.isCheck} v-for="(childIndex,small) in item.pcolorDTOs" @click="selectSmallImg(rootIndex,childIndex)">
+                <img v-bind:src=small.smartUrl >
+            </div>
         </div>
-        <table class="productMessage">
-            <thead>
-                <tr>
-                    <th width="13%">Size</th>
-                    <th width="24%">Fitment</th>
-                    <th width="40%">finish</th>
-                    <th width="13%">QtyAvail</th>
-                    <th width="10%">More</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>18×8</td>
-                    <td>Front and Rear</td>
-                    <td> SILVER V/BRUSHED FACE</td>
-                    <td>3</td>
-                    <td class="messageIcon"><img src="images/message.png"></td>
-                    <td class="alertProductData">
-                        <div class="alertTitle">产品详细信息</div>
-                        <table class="moreMessageTabel">
-                            <thead>
-                                <tr>
-                                    <th width="17%">PCD</th>
-                                    <th width="15%">Offset</th>
-                                    <th width="18%">Qty Avail</th>
-                                    <th width="17%">Qty Bulk</th>
-                                    <th width="33%">Qty Transit</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>5×114.3</td>
-                                    <td>35</td>
-                                    <td>3</td>
-                                    <td>n/a</td>
-                                    <td>0</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <table class="moreMessageTabel">
-                            <thead>
-                                <tr>
-                                    <th width="17%">PCD</th>
-                                    <th width="15%">Offset</th>
-                                    <th width="18%">Qty Avail</th>
-                                    <th width="17%">Qty Bulk</th>
-                                    <th width="33%">Qty Transit</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>5×114.3</td>
-                                    <td>35</td>
-                                    <td>3</td>
-                                    <td>n/a</td>
-                                    <td>0</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <div class="close"><img src="images/close.png"/></div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>18×8</td>
-                    <td>Front and Rear</td>
-                    <td> SILVER V/BRUSHED FACE</td>
-                    <td>3</td>
-                    <td class="messageIcon"><img src="images/message.png"></td>
-                </tr>
-                <tr>
-                    <td>18×8</td>
-                    <td>Front and Rear</td>
-                    <td> SILVER V/BRUSHED FACE</td>
-                    <td>3</td>
-                    <td class="messageIcon"><img src="images/message.png"></td>
-                </tr>
-            </tbody>
-        </table>
     </div>
-    <script type="text/javascript" src="js/index.js"></script>
-    <script type="text/javascript" src="js/jquery.1.9.1.min.js"></script>
-    
+    <div class="mask none"></div>
+    <div class="alertBox none">
+        <div class="close"><img src="images/close.png" /></div>
+        <div class="title" v-text="productName"></div>
+        <div class="logo3"><img src="images/logo2.jpg" /></div>
+        <div class="imgDisplay">
+            <img v-bind:src=positionOne />
+            <span class="positive">positive</span>
+            <img v-bind:src=positionTwo />
+            <span class="positive">45 Side</span>
+            <img v-bind:src=positionThree />
+            <span class="positive">Side</span>
+        </div>
+        <div class="tel">
+            <a href="tel:15150534178"><img src="images/tel.png" /></a>
+        </div>
+        <div class="iphone">
+            <a href="tel:15150534178"><img src="images/tel.png" /></a>
+        </div>
+        <div class="footer">
+            南京脸全网络科技有限公司版权所有
+            <br/> Copyright 2016 Face Wheels (Nanjing) Co., LTD. All
+            <br/> Rights Reserved
+        </div>
+    </div>
+    <script type="text/javascript" src="js/common.js"></script>
+    <script type="text/javascript" src="js/productList.js"></script>
 </body>
 
 </html>
